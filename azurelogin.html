@@ -1,0 +1,249 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Console Login Demo</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            color: #16191f;
+        }
+
+        /* Header */
+        .header {
+            height: 65px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #232f3e;
+        }
+
+        .logo span {
+            color: #ff9900;
+        }
+
+        .demo-label {
+            color: #545b64;
+            font-size: 12px;
+        }
+
+        /* Login container */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 65px 20px;
+        }
+
+        .login-card {
+            width: 390px;
+            max-width: 100%;
+            padding: 30px;
+            border: 1px solid #d5dbdb;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0000000d;
+        }
+
+        h1 {
+            font-size: 25px;
+            margin: 0 0 12px;
+        }
+
+        .description {
+            color: #545b64;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .option {
+            display: flex;
+            gap: 12px;
+            padding: 15px;
+            border: 1px solid #879596;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .option:has(input:checked) {
+            border: 2px solid #0972d3;
+            background: #f2f8ff;
+            padding: 14px;
+        }
+
+        .option input {
+            accent-color: #0972d3;
+        }
+
+        .option strong {
+            font-size: 14px;
+        }
+
+        .option p {
+            font-size: 12px;
+            color: #545b64;
+            margin: 5px 0 0;
+            line-height: 1.5;
+        }
+
+        label.field-label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 20px 0 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #879596;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: 2px solid #0972d3;
+            border-color: transparent;
+        }
+
+        button {
+            width: 100%;
+            border: none;
+            padding: 12px;
+            border-radius: 20px;
+            background: #ff9900;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #ec7211;
+        }
+
+        .message {
+            font-size: 13px;
+            color: #b12704;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            color: #545b64;
+            font-size: 12px;
+            line-height: 1.8;
+            margin: 10px 20px 30px;
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 0 20px;
+            }
+
+            .container {
+                padding-top: 30px;
+            }
+
+            .login-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">aws<span>☁</span></div>
+        <div class="demo-label">CLOUD CONSOLE UI DEMO</div>
+    </header>
+
+    <main class="container">
+        <section class="login-card">
+
+            <h1>Sign in to Console</h1>
+
+            <p class="description">
+                Choose a sign-in method to continue
+                to your cloud console demo.
+            </p>
+
+            <form id="loginForm">
+
+                <label class="option">
+                    <input type="radio" name="loginType"
+                           value="root" checked>
+                    <div>
+                        <strong>Root user</strong>
+                        <p>Sign-in method for the account owner.</p>
+                    </div>
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="loginType"
+                           value="iam">
+                    <div>
+                        <strong>IAM user</strong>
+                        <p>Sign-in method for an account user.</p>
+                    </div>
+                </label>
+
+                <label class="field-label" for="username">
+                    Email address or username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter a demo username"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">Continue</button>
+
+                <p class="message" id="message" role="status"></p>
+
+            </form>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        This is a practice UI, not an official AWS sign-in page.<br>
+        No credentials are collected or transmitted.
+    </footer>
+
+    <script>
+        document.getElementById("loginForm")
+            .addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                document.getElementById("message").textContent =
+                    "Demo only: authentication is not connected. " +
+                    "Do not enter real AWS account information.";
+            });
+    </script>
+
+</body>
+</html>
+```
